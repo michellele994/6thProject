@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+	//Intializing my variables...
 	var topics = ["breakfast", "waffles", "pancakes", "bacon", "bread", "lunch", "pizza", "chicken wings", "french fries",
 	"burgers", "tacos", "burritos", "sandwich", "nachos", "barbecue", "dinner", "ramen", "lobster", "sushi", "steak", "mashed potatoes",
 	"pasta", "ice cream", "brownies", "cookies", "pastry", "donuts", "cupcakes", "pie", "cake"];
@@ -9,6 +10,7 @@ $(document).ready(function(){
 	var numberOfGif = 10;
 	var duplicate = false;
 
+	//function to make the buttons
 	function makeButtons() {
 		$("#buttonarea").empty();
 		for (var i = 0; i < topics.length; i++)
@@ -21,6 +23,7 @@ $(document).ready(function(){
 		}
 	}
 
+	//function to display the Gifs, used when the buttons are clicked.
 	function displayGif() {
 		$("#gifs").empty();
 		$("#subheading").empty();
@@ -59,6 +62,7 @@ $(document).ready(function(){
 		});
 	}
 
+	//function to update the gif if clicked. If the Gif is moving, then stop it. If the gif is still, then move it.
 	function updateGif() {
 		var currentIndex = $(this).attr("data-index");
 		var currentMoving = $(this).attr("data-moving");
@@ -76,6 +80,7 @@ $(document).ready(function(){
 
 	}
 
+	//This function takes in the input from the user to create a new button
 	$("input[type='submit']").on("click", function(event) {
 		event.preventDefault();
 
@@ -104,6 +109,7 @@ $(document).ready(function(){
 		}
 	})
 
+	//running the functions
 	makeButtons();
 	$(document).on("click", ".topic", displayGif);
 	$(document).on("click", ".gifdisplayed", updateGif);
