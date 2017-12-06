@@ -32,7 +32,7 @@ $(document).ready(function(){
 
 		var currTopic = $(this).attr("data-name");
 		var fixedTopic = currTopic.split(" ").join("+");
-		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + currTopic +"&api_key=dc6zaTOxFJmzC&limit=" +numberOfGif;
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + fixedTopic +"&api_key=dc6zaTOxFJmzC&limit=" +numberOfGif;
 
 		$.ajax({
 			url: queryURL,
@@ -40,6 +40,8 @@ $(document).ready(function(){
 		}).done(function(response) {
 			for (var i = 0; i < numberOfGif; i++)
 			{
+				console.log(fixedTopic);
+				console.log(queryURL);
 				var toPushRating = response.data[i].rating;
 				var toPushStill = response.data[i].images.fixed_height_small_still.url;
 				var toPushMoving = response.data[i].images.fixed_height_small.url;
