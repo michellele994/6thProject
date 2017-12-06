@@ -1,0 +1,54 @@
+body {
+	background-image: url("../images/bg.png");
+	cursor: url(../images/mouse.png), auto;
+	margin: 0 auto;
+}
+h1 {
+	font-size: 40px;
+	font-weight: bold;
+	padding: 25px 0px 0px 0px;
+}
+button {
+	margin: 5px;
+	cursor: url(../images/mouse.png), auto;
+}
+img {
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+}
+.wrapping {
+	margin: 0 auto;
+	width: 750px;
+	min-height: 525px;
+	padding: 60px;
+	text-align: center;
+	background-color: white;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(180,180,180);
+	border-radius: 100%;
+}
+.ring {
+	margin: 0 auto;
+	width: 700px;
+	min-height: 525px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: rgb(230,230,230);
+	border-radius: 100%;
+}
+.gifdisplayed {
+	display: inline-block;
+	margin: 10px;
+}
+.gifdisplayed:hover {
+	opacity: 0.8;
+}
+#subheading {
+	margin: 0;
+	padding: 0;
+}
+#bottomtext {
+	margin: 10px;
+}
