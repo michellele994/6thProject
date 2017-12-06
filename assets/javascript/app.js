@@ -40,8 +40,6 @@ $(document).ready(function(){
 		}).done(function(response) {
 			for (var i = 0; i < numberOfGif; i++)
 			{
-				console.log(fixedTopic);
-				console.log(queryURL);
 				var toPushRating = response.data[i].rating;
 				var toPushStill = response.data[i].images.fixed_height_small_still.url;
 				var toPushMoving = response.data[i].images.fixed_height_small.url;
