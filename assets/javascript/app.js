@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 		var currTopic = $(this).attr("data-name");
 		var fixedTopic = currTopic.split(" ").join("+");
-		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + currTopic +"&api_key=dc6zaTOxFJmzC&limit=" +numberOfGif;
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + currTopic +"&api_key=dc6zaTOxFJmzC&limit=" +numberOfGif;
 
 		$.ajax({
 			url: queryURL,
