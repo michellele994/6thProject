@@ -29,6 +29,7 @@ $(document).ready(function(){
 		$("#subheading").empty();
 		gifStillURL = [];
 		gifMovingURL = [];
+		ratings = [];
 
 		var currTopic = $(this).attr("data-name");
 		var fixedTopic = currTopic.split(" ").join("+");
