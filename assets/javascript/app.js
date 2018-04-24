@@ -1,9 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
 	//Intializing my variables...
 	var topics = ["breakfast", "waffles", "pancakes", "bacon", "bread", "lunch", "pizza", "chicken wings", "french fries",
-	"burgers", "tacos", "burritos", "sandwich", "nachos", "barbecue", "dinner", "ramen", "lobster", "sushi", "steak", "mashed potatoes",
-	"pasta", "ice cream", "brownies", "cookies", "pastry", "donuts", "cupcakes", "pie", "cake"];
+		"burgers", "tacos", "burritos", "sandwich", "nachos", "barbecue", "dinner", "ramen", "lobster", "sushi", "steak", "mashed potatoes",
+		"pasta", "ice cream", "brownies", "cookies", "pastry", "donuts", "cupcakes", "pie", "cake"];
 	var gifStillURL = [];
 	var gifMovingURL = [];
 	var ratings = [];
@@ -13,8 +13,7 @@ $(document).ready(function(){
 	//function to make the buttons
 	function makeButtons() {
 		$("#buttonarea").empty();
-		for (var i = 0; i < topics.length; i++)
-		{
+		for (var i = 0; i < topics.length; i++) {
 			var button = $("<button>");
 			button.addClass("topic");
 			button.attr("data-name", topics[i]);
@@ -31,16 +30,16 @@ $(document).ready(function(){
 		gifMovingURL = [];
 		ratings = [];
 
+		//Using Ajax to search through the API.
 		var currTopic = $(this).attr("data-name");
 		var fixedTopic = currTopic.split(" ").join("+");
-		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + fixedTopic +"&api_key=dc6zaTOxFJmzC&limit=" +numberOfGif;
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + fixedTopic + "&api_key=dc6zaTOxFJmzC&limit=" + numberOfGif;
 
 		$.ajax({
 			url: queryURL,
 			method: "GET"
-		}).done(function(response) {
-			for (var i = 0; i < numberOfGif; i++)
-			{
+		}).done(function (response) {
+			for (var i = 0; i < numberOfGif; i++) {
 				var toPushRating = response.data[i].rating;
 				var toPushStill = response.data[i].images.fixed_height_small_still.url;
 				var toPushMoving = response.data[i].images.fixed_height_small.url;
@@ -51,11 +50,11 @@ $(document).ready(function(){
 
 
 
-				var gifDiv = $("<div id ='gif" + (i+1) +  "''>");
+				var gifDiv = $("<div id ='gif" + (i + 1) + "''>");
 				gifDiv.addClass("gifdisplayed");
 				gifDiv.attr("data-index", i);
 				gifDiv.attr("data-moving", "no");
-				$(gifDiv).html("<img src='"+gifStillURL[i]+"'><br>Rating: " + ratings[i]);
+				$(gifDiv).html("<img src='" + gifStillURL[i] + "'><br>Rating: " + ratings[i]);
 				$("#gifs").append(gifDiv);
 
 			}
@@ -68,13 +67,11 @@ $(document).ready(function(){
 		var currentIndex = $(this).attr("data-index");
 		var currentMoving = $(this).attr("data-moving");
 
-		if (currentMoving === "no")
-		{
+		if (currentMoving === "no") {
 			$(this).find('img').attr('src', gifMovingURL[currentIndex]);
 			$(this).attr("data-moving", "yes");
 		}
-		else if (currentMoving === "yes")
-		{
+		else if (currentMoving === "yes") {
 			$(this).html("<img src ='" + gifStillURL[currentIndex] + "'><br>Rating: " + ratings[currentIndex]);
 			$(this).attr("data-moving", "no");
 		}
@@ -82,28 +79,24 @@ $(document).ready(function(){
 	}
 
 	//This function takes in the input from the user to create a new button
-	$("input[type='submit']").on("click", function(event) {
+	$("input[type='submit']").on("click", function (event) {
 		event.preventDefault();
 
 		var addedTopic = $("input[type='text']").val();
 		$("input[type='text']").val("");
 		addedTopic = addedTopic.toLowerCase();
 
-		for (var i =0; i < topics.length; i++)
-		{
-			if (topics[i] === addedTopic)
-			{
+		for (var i = 0; i < topics.length; i++) {
+			if (topics[i] === addedTopic) {
 				duplicate = true;
 			}
 		}
-		if (duplicate)
-		{
+		if (duplicate) {
 			$("#gifs").empty();
 			$("#bottomtext").text("This button already exists!")
 			duplicate = false;
 		}
-		else
-		{
+		else {
 			$("#bottomtext").text("New food topic has been added!!!!!!!")
 			topics.push(addedTopic);
 			makeButtons();
